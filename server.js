@@ -34,10 +34,10 @@ db.connect((err) => {
 
   // Rota para receber dados e inserir no MySQL
   app.post("/locations", (req, res) => {
-    const { lat, lng } = req.body;
+    const { latitude, longitude } = req.body;
   
     // Verifica se os valores foram enviados
-    if (lat == null || lng == null) {
+    if (latitude== null || longitude == null) {
       return res.status(400).json({ status: "error", message: "lat e lng são obrigatórios." });
     }
   
@@ -66,9 +66,9 @@ db.connect((err) => {
     }
   
     // Query para inserir os dados
-    const query = "UPDATE gps SET lat=?, lng=? WHERE id_gps=?;";
+    const query = "UPDATE gps SET latitude=?, longitude=? WHERE id_gps=?;";
   
-    db.query(query, [lat, lng, id_gps], (err, results) => {
+    db.query(query, [latitude, longitude, id_gps], (err, results) => {
       if (err) {
         console.error("Erro ao atualizar no banco de dados:", err);
         return res.status(500).json({ status: "error", message: "Erro ao atualizar dados no banco." });
@@ -92,36 +92,212 @@ app.get("/users/get_route_location", (req, res) => {
         {
             'type': 'Feature',
             'properties': {
-                'message': 'Foo',
+                'message': 'CALDINHAS',
                 'iconSize': [64, 64]
             },
             'geometry': {
                 'type': 'Point',
-                'coordinates': [-8.571609, 41.462187]
-            }
-        }/*,
-        {
-            'type': 'Feature',
-            'properties': {
-                'message': 'Bar',
-                'iconSize': [64, 64]
-            },
-            'geometry': {
-                'type': 'Point',
-                'coordinates': [-61.2158203125, -15.97189158092897]
+                'coordinates': [-8.481917, 41.369111]
             }
         },
         {
             'type': 'Feature',
             'properties': {
-                'message': 'Baz',
+                'message': 'SANTO TIRSO',
                 'iconSize': [64, 64]
             },
             'geometry': {
                 'type': 'Point',
-                'coordinates': [-63.29223632812499, -18.28151823530889]
+                'coordinates': [-8.472306, 41.344083]
             }
-        }*/
+        },
+     {
+            'type': 'Feature',
+            'properties': {
+              'message': 'MONTE CORDOBA',
+                'iconSize': [64, 64]
+            },
+            'geometry': {
+                'type': 'Point',
+                'coordinates': [-8.462167, 41.332111]
+            }
+        },
+        {
+          'type': 'Feature',
+          'properties': {
+            'message': 'MONTE CORDOBA',
+              'iconSize': [64, 64]
+          },
+          'geometry': {
+              'type': 'Point',
+              'coordinates': [-8.451167, 41.336750]
+          }
+      },
+      {
+        'type': 'Feature',
+        'properties': {
+            'message': 'MONTE CORDOBA',
+            'iconSize': [64, 64]
+        },
+        'geometry': {
+            'type': 'Point',
+            'coordinates': [-8.429139, 41.317972]
+        }
+    },
+    {
+      'type': 'Feature',
+      'properties': {
+          'message': 'RIBA DE AVE',
+          'iconSize': [64, 64]
+      },
+      'geometry': {
+          'type': 'Point',
+          'coordinates': [-8.425333, 41.316667]
+      }
+  },
+  {
+    'type': 'Feature',
+    'properties': {
+        'message': 'MEIXOMIL',
+        'iconSize': [64, 64]
+    },
+    'geometry': {
+        'type': 'Point',
+        'coordinates': [-8.415194, 41.310306]
+    }
+},
+{
+  'type': 'Feature',
+  'properties': {
+    'message': 'MONTE CORDOBA',
+      'iconSize': [64, 64]
+  },
+  'geometry': {
+      'type': 'Point',
+      'coordinates': [-8.451167, 41.336750]
+  }
+},
+{
+  'type': 'Feature',
+  'properties': {
+    'message': 'MONTE CORDOBA',
+      'iconSize': [64, 64]
+  },
+  'geometry': {
+      'type': 'Point',
+      'coordinates': [-8.451167, 41.336750]
+  }
+},
+{
+  'type': 'Feature',
+  'properties': {
+    'message': 'MONTE CORDOBA',
+      'iconSize': [64, 64]
+  },
+  'geometry': {
+      'type': 'Point',
+      'coordinates': [-8.451167, 41.336750]
+  }
+},
+{
+  'type': 'Feature',
+  'properties': {
+    'message': 'MONTE CORDOBA',
+      'iconSize': [64, 64]
+  },
+  'geometry': {
+      'type': 'Point',
+      'coordinates': [-8.451167, 41.336750]
+  }
+},
+{
+  'type': 'Feature',
+  'properties': {
+    'message': 'MONTE CORDOBA',
+      'iconSize': [64, 64]
+  },
+  'geometry': {
+      'type': 'Point',
+      'coordinates': [-8.451167, 41.336750]
+  }
+},
+{
+  'type': 'Feature',
+  'properties': {
+    'message': 'MONTE CORDOBA',
+      'iconSize': [64, 64]
+  },
+  'geometry': {
+      'type': 'Point',
+      'coordinates': [-8.451167, 41.336750]
+  }
+},
+{
+  'type': 'Feature',
+  'properties': {
+    'message': 'MONTE CORDOBA',
+      'iconSize': [64, 64]
+  },
+  'geometry': {
+      'type': 'Point',
+      'coordinates': [-8.451167, 41.336750]
+  }
+},
+{
+  'type': 'Feature',
+  'properties': {
+    'message': 'MONTE CORDOBA',
+      'iconSize': [64, 64]
+  },
+  'geometry': {
+      'type': 'Point',
+      'coordinates': [-8.451167, 41.336750]
+  }
+},
+{
+  'type': 'Feature',
+  'properties': {
+    'message': 'MONTE CORDOBA',
+      'iconSize': [64, 64]
+  },
+  'geometry': {
+      'type': 'Point',
+      'coordinates': [-8.451167, 41.336750]
+  }
+},
+{
+  'type': 'Feature',
+  'properties': {
+    'message': 'MONTE CORDOBA',
+      'iconSize': [64, 64]
+  },
+  'geometry': {
+      'type': 'Point',
+      'coordinates': [-8.451167, 41.336750]
+  }
+},
+{
+  'type': 'Feature',
+  'properties': {
+    'message': 'MONTE CORDOBA',
+      'iconSize': [64, 64]
+  },
+  'geometry': {
+      'type': 'Point',
+      'coordinates': [-8.451167, 41.336750]
+  }
+},
+{
+  'type': 'Feature',
+  'properties': {
+    'message': 'MONTE CORDOBA',
+      'iconSize': [64, 64]
+  },
+  'geometry': {
+      'type': 'Point',
+      'coordinates': [-8.451167, 41.336750]
+  }
+},
     ]
 });
 });
@@ -129,8 +305,56 @@ app.get("/users/get_route_location", (req, res) => {
 // quais as routes que precisas para :
 
 // arduino enviar/receber ?
+// Rota para o Arduino enviar dados
+app.post("/locations", (req, res) => {
+  const { id, status, message } = req.body;
+
+  // Verifica se os valores foram enviados
+  if (id == null || status == null || message == null) {
+    return res.status(400).json({ status: "error", message: "id, status e message são obrigatórios." });
+  }
+
+  // Query para inserir ou atualizar os dados no banco de dados
+  const query = "INSERT INTO locations (id, status, message) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE status=?, message=?";
+
+  db.query(query, [id, status, message, status, message], (err, results) => {
+    if (err) {
+      console.error("Erro ao processar os dados enviados pelo Arduino:", err);
+      return res.status(500).json({ status: "error", message: "Erro ao processar dados no banco." });
+    }
+
+    // Retorna sucesso
+    res.status(200).json({ status: "ok", message: "Dados enviados pelo Arduino processados com sucesso!" });
+  });
+});
+
+
 
 // app utilizadores : enviar/receber
+app.post("/utilizadores", (req, res) => {
+  const { id_utilizador, nome, email, get_all_location } = req.body;
+
+  // Verifica se os valores foram enviados
+  if (!id_utilizador || !nome|| !email || !get_all_locationlocation) {
+    return res.status(400).json({ status: "error", message: "Campos obrigatórios: id, nome, email, localização" });
+  }
+
+  // Query para inserir ou atualizar dados
+  const query = `
+    INSERT INTO utilizadores (id_utilizador, nome, email, get_all_location) 
+    VALUES (1, Toze Mario, tozemario@gmai.com, Escola) 
+    ON DUPLICATE KEY UPDATE name=?, email=?, location=?;
+  `;
+
+  db.query(query, [id_utilizador, nome, email, get_all_locationlocation, nome, email, get_all_locationlocation], (err, results) => {
+    if (err) {
+      console.error("Erro ao inserir/atualizar dados dos utilizadores:", err);
+      return res.status(500).json({ status: "error", message: "Erro ao processar dados no banco." });
+    }
+
+    res.status(200).json({ status: "ok", message: "Dados enviados com sucesso!" });
+  });
+});
 
 
 

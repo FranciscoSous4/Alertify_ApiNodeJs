@@ -1,0 +1,187 @@
+const express = require("express");
+const cors = require("cors");
+
+const app = express();
+
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Rota para paragens fixas
+app.get("/fixed_stops", (req, res) => {
+    res.json({
+        type: "FeatureCollection",
+        features: [
+            {
+                type: "Feature",
+                properties: { name: "CALDINHAS", icon: "bus_stop" },
+                geometry: { type: "Point", coordinates: [-8.481917, 41.369111] }
+            },
+            {
+                type: "Feature",
+                properties: { name: "SANTO TIRSO", icon: "bus_stop" },
+                geometry: { type: "Point", coordinates: [-8.472306, 41.344083] }
+            },
+            {
+                type: "Feature",
+                properties: { name: "MONTE CORDOBA - 1", icon: "bus_stop" },
+                geometry: { type: "Point", coordinates: [-8.462167, 41.332111] }
+            },
+            {
+                type: "Feature",
+                properties: { name: "PENAMAIOR", icon: "bus_stop" },
+                geometry: { type: "Point", coordinates: [-8.401778, 41.283472] }
+            }
+            // Adiciona mais paragens conforme necessário
+        ]
+    });
+});
+
+// Configuração do servidor
+const PORT = process.env.PORT || 8079;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}.`);
+});
+///////////////////////////////////////////////////
+
+
+
+
+
+const express = require("express");
+const cors = require("cors");
+const mysql = require("mysql2");
+
+const app = express();
+
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Configuração da conexão com o MySQL
+const db = mysql.createConnection({
+    host: "localhost", 
+    user: "root",
+    password: "",
+    database: "alertify",
+});
+
+// Testar conexão
+db.connect((err) => {
+    if (err) {
+        console.error("Erro ao conectar ao MySQL:", err);
+        return;
+    }
+    console.log("Conectado ao banco de dados MySQL!");
+});
+
+// Rota para paragens fixas
+app.get("/fixed_stops", (req, res) => {
+    res.json({
+        type: "FeatureCollection",
+        features: [
+            {
+                type: "Feature",
+                properties: { name: "CALDINHAS" },
+                geometry: { type: "Point", coordinates: [-8.481917, 41.369111] }
+            },
+            {
+                type: "Feature",
+                properties: { name: "SANTO TIRSO" },
+                geometry: { type: "Point", coordinates: [-8.472306, 41.344083] }
+            },
+            {
+                type: "Feature",
+                properties: { name: "MONTE CORDOBA - 1" },
+                geometry: { type: "Point", coordinates: [-8.462167, 41.332111] }
+            },
+            {
+                type: "Feature",
+                properties: { name: "MONTE CORDOBA - 2" },
+                geometry: { type: "Point", coordinates: [-8.451167, 41.336750] }
+            },
+            {
+                type: "Feature",
+                properties: { name: "MONTE CORDOBA - 3" },
+                geometry: { type: "Point", coordinates: [-8.429139, 41.317972] }
+            },
+            {
+                type: "Feature",
+                properties: { name: "RIBA DE AVE" },
+                geometry: { type: "Point", coordinates: [-8.425333, 41.316667] }
+            },
+            {
+                type: "Feature",
+                properties: { name: "MEIXOMIL - 1" },
+                geometry: { type: "Point", coordinates: [-8.415194, 41.310306] }
+            },
+            {
+                type: "Feature",
+                properties: { name: "MEIXOMIL - 2" },
+                geometry: { type: "Point", coordinates: [-8.402667, 41.294528] }
+            },
+            {
+                type: "Feature",
+                properties: { name: "EIRIZ - 1" },
+                geometry: { type: "Point", coordinates: [-8.388028, 41.307361] }
+            },
+            {
+                type: "Feature",
+                properties: { name: "EIRIZ - 2" },
+                geometry: { type: "Point", coordinates: [-8.377861, 41.312361] }
+            },
+            {
+                type: "Feature",
+                properties: { name: "SANFINS - 1" },
+                geometry: { type: "Point", coordinates: [-8.374778, 41.314528] }
+            },
+            {
+                type: "Feature",
+                properties: { name: "SANFINS - 2" },
+                geometry: { type: "Point", coordinates: [-8.372028, 41.318750] }
+            },
+            {
+                type: "Feature",
+                properties: { name: "SANFINS - 3" },
+                geometry: { type: "Point", coordinates: [-8.363278, 41.317778] }
+            },
+            {
+                type: "Feature",
+                properties: { name: "LAMOSO" },
+                geometry: { type: "Point", coordinates: [-8.354556, 41.320083] }
+            },
+            {
+                type: "Feature",
+                properties: { name: "FIGUEIRO - 1" },
+                geometry: { type: "Point", coordinates: [-8.340194, 41.312833] }
+            },
+            {
+                type: "Feature",
+                properties: { name: "FIGUEIRO - 2" },
+                geometry: { type: "Point", coordinates: [-8.347583, 41.309361] }
+            },
+            {
+                type: "Feature",
+                properties: { name: "CARVALHOSA - 1" },
+                geometry: { type: "Point", coordinates: [-8.360833, 41.301889] }
+            },
+            {
+                type: "Feature",
+                properties: { name: "CARVALHOSA - 2" },
+                geometry: { type: "Point", coordinates: [-8.362778, 41.301111] }
+            },
+            {
+                type: "Feature",
+                properties: { name: "PENAMAIOR" },
+                geometry: { type: "Point", coordinates: [-8.401778, 41.283472] }
+            }
+        ]
+    });
+});
+
+// Configuração do servidor
+const PORT = process.env.PORT || 8079;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}.`);
+});
+
