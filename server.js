@@ -169,133 +169,133 @@ app.get("/users/get_route_location", (req, res) => {
 {
   'type': 'Feature',
   'properties': {
-    'message': 'MONTE CORDOBA',
+      'message': 'MEIXOMIL',
       'iconSize': [64, 64]
   },
   'geometry': {
       'type': 'Point',
-      'coordinates': [-8.451167, 41.336750]
+      'coordinates': [-8.402667, 41.294528]
   }
 },
 {
   'type': 'Feature',
   'properties': {
-    'message': 'MONTE CORDOBA',
+      'message': 'EIRIZ',
       'iconSize': [64, 64]
   },
   'geometry': {
       'type': 'Point',
-      'coordinates': [-8.451167, 41.336750]
+      'coordinates': [-8.388028, 41.307361]
   }
 },
 {
   'type': 'Feature',
   'properties': {
-    'message': 'MONTE CORDOBA',
+      'message': 'EIRIZ',
       'iconSize': [64, 64]
   },
   'geometry': {
       'type': 'Point',
-      'coordinates': [-8.451167, 41.336750]
+      'coordinates': [-8.377861, 41.312361]
   }
 },
 {
   'type': 'Feature',
   'properties': {
-    'message': 'MONTE CORDOBA',
+      'message': 'SANFINS',
       'iconSize': [64, 64]
   },
   'geometry': {
       'type': 'Point',
-      'coordinates': [-8.451167, 41.336750]
+      'coordinates': [-8.374778, 41.314528]
   }
 },
 {
   'type': 'Feature',
   'properties': {
-    'message': 'MONTE CORDOBA',
+      'message': 'SANFINS',
       'iconSize': [64, 64]
   },
   'geometry': {
       'type': 'Point',
-      'coordinates': [-8.451167, 41.336750]
+      'coordinates': [-8.372028, 41.318750]
   }
 },
 {
   'type': 'Feature',
   'properties': {
-    'message': 'MONTE CORDOBA',
+      'message': 'SANFINS',
       'iconSize': [64, 64]
   },
   'geometry': {
       'type': 'Point',
-      'coordinates': [-8.451167, 41.336750]
+      'coordinates': [-8.363278, 41.317778]
   }
 },
 {
   'type': 'Feature',
   'properties': {
-    'message': 'MONTE CORDOBA',
+      'message': 'LAMOSO',
       'iconSize': [64, 64]
   },
   'geometry': {
       'type': 'Point',
-      'coordinates': [-8.451167, 41.336750]
+      'coordinates': [-8.354556, 41.320083]
   }
 },
 {
   'type': 'Feature',
   'properties': {
-    'message': 'MONTE CORDOBA',
+      'message': 'FIGUEIRO',
       'iconSize': [64, 64]
   },
   'geometry': {
       'type': 'Point',
-      'coordinates': [-8.451167, 41.336750]
+      'coordinates': [-8.340194, 41.312833]
   }
 },
 {
   'type': 'Feature',
   'properties': {
-    'message': 'MONTE CORDOBA',
+      'message': 'FIGUEIRO',
       'iconSize': [64, 64]
   },
   'geometry': {
       'type': 'Point',
-      'coordinates': [-8.451167, 41.336750]
+      'coordinates': [-8.347583, 41.309361]
   }
 },
 {
   'type': 'Feature',
   'properties': {
-    'message': 'MONTE CORDOBA',
+      'message': 'CARVALHOSA',
       'iconSize': [64, 64]
   },
   'geometry': {
       'type': 'Point',
-      'coordinates': [-8.451167, 41.336750]
+      'coordinates': [-8.360833, 41.301889]
   }
 },
 {
   'type': 'Feature',
   'properties': {
-    'message': 'MONTE CORDOBA',
+      'message': 'CARVALHOSA',
       'iconSize': [64, 64]
   },
   'geometry': {
       'type': 'Point',
-      'coordinates': [-8.451167, 41.336750]
+      'coordinates': [-8.362778, 41.301111]
   }
 },
 {
   'type': 'Feature',
   'properties': {
-    'message': 'MONTE CORDOBA',
+      'message': 'PENAMAIOR',
       'iconSize': [64, 64]
   },
   'geometry': {
       'type': 'Point',
-      'coordinates': [-8.451167, 41.336750]
+      'coordinates': [-8.401778, 41.283472]
   }
 },
     ]
@@ -305,7 +305,22 @@ app.get("/users/get_route_location", (req, res) => {
 // quais as routes que precisas para :
 
 // arduino enviar/receber ?
-// Rota para o Arduino enviar dados
+app.post('/gps', (req, res) => {
+  const { latitude, longitude } = req.body;
+  
+  if (!latitude || !longitude) {
+      return res.status(400).json({ error: 'Latitude e Longitude são obrigatórias' });
+  }
+  
+  console.log(`Recebido: Latitude = ${latitude}, Longitude = ${longitude}`);
+  res.json({ message: 'Dados recebidos com sucesso', latitude, longitude });
+});
+
+app.listen(port, () => {
+  console.log(`Servidor rodando em http://localhost:${port}`);
+});
+
+/*// Rota para o Arduino enviar dados
 app.post("/locations", (req, res) => {
   const { id, status, message } = req.body;
 
@@ -327,7 +342,7 @@ app.post("/locations", (req, res) => {
     res.status(200).json({ status: "ok", message: "Dados enviados pelo Arduino processados com sucesso!" });
   });
 });
-
+*/
 
 
 // app utilizadores : enviar/receber
