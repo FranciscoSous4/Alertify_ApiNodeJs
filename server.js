@@ -99,7 +99,7 @@ app.get("/last_location", (req, res) => {
 });
 // para receber a data
 app.get("/last_date", (req, res) => {
-  // Consulta à base de dados para pegar a última data
+  // Consulta à base de dados para ir buscar a última data
   const query = "SELECT cdate FROM locations ORDER BY id DESC LIMIT 1";
   
   db.query(query, (err, results) => {
